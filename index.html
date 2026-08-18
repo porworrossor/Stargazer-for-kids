@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>นักดาราศาสตร์น้อย: เกมทายรูปทรงกลุ่มดาว 12 จักราศี (Stargazer Kids)</title>
+  <meta name="description" content="เกมตอบคำถามกลุ่มดาว 12 จักราศี สำหรับเด็กประถม เรียนรู้รูปร่างกลุ่มดาวพร้อมภาพซ้อนจินตนาการและเสียงเอฟเฟกต์อวกาศ">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+
+  <!-- Dynamic Starfield Background Canvas -->
+  <canvas id="starfield-canvas"></canvas>
+
+  <!-- Confetti Celebration Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="app-wrapper">
+
+    <!-- Top Global Header -->
+    <header class="app-header">
+      <div class="logo-area" id="btn-home-logo" title="กลับหน้าแรก">
+        <div class="logo-icon">🪐</div>
+        <div class="logo-text">
+          <h1>Stargazer Kids</h1>
+          <span>นักดาราศาสตร์น้อยท่อง 12 จักราศี</span>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <a href="studio.html" class="header-btn" style="text-decoration: none;" title="สตูดิโอปรับแต่ง & ตรวจสอบกลุ่มดาว 12 ราศี">
+          🛠️ <span>สตูดิโอปรับแต่ง</span>
+        </a>
+        <button id="btn-open-codex" class="header-btn" title="สารานุกรม 12 ราศี">
+          📖 <span>สารานุกรมดาว</span>
+        </button>
+        <button id="btn-toggle-sound" class="header-btn" title="เปิด/ปิดเสียง">
+          🔊 <span id="sound-btn-text">เสียง: เปิด</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Screens -->
+    <main>
+
+      <!-- 1. START SCREEN -->
+      <section id="screen-start" class="screen active">
+        <div class="glass-panel hero-content">
+          <div class="hero-badge">🌟 สนุก ง่าย เหมาะสำหรับเด็กประถม</div>
+          <h2 class="hero-title">ดวงดาวบนฟ้า...<br>มีรูปร่างคล้ายอะไรนะ?</h2>
+          <p class="hero-subtitle">
+            มาร่วมสำรวจกลุ่มดาว 12 จักราศีกับยานอวกาศน้อย มองดวงดาวที่ส่องประกาย 
+            แล้วจินตนาการไปพร้อมกันว่าดวงดาวเหล่านี้มีรูปร่างเหมือนสัตว์หรือสิ่งของอะไร!
+          </p>
+
+          <div class="mode-cards-grid">
+            <div class="mode-card primary" id="btn-start-practice">
+              <div class="mode-icon">🔭</div>
+              <h3>โหมดฝึกท่องอวกาศ</h3>
+              <p>เล่นสบายๆ ไม่จำกัดเวลา มีแว่นตามองทะลุภาพร่างช่วยใบ้</p>
+            </div>
+
+            <div class="mode-card" id="btn-start-challenge">
+              <div class="mode-icon">⚡</div>
+              <h3>โหมดนักล่าดวงดาว</h3>
+              <p>ท้าทายความเร็ว เก็บแต้มสะสมคอมโบเพื่อชิงเกียรติบัตรทองคำ</p>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" id="btn-main-play">
+              <span>🚀 เริ่มออกเดินทางเลย!</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. QUIZ SCREEN -->
+      <section id="screen-quiz" class="screen">
+        <div class="glass-panel">
+          
+          <!-- Top Quiz HUD -->
+          <div class="game-top-bar">
+            <div class="progress-container">
+              <div class="progress-labels">
+                <span id="quiz-question-counter">ข้อที่ 1 / 12</span>
+                <span id="quiz-streak-counter" class="streak-pill" style="display: none;">🔥 Combo x2</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="quiz-progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="game-score-badge">
+              <span>⭐</span> <span id="quiz-score-display">0</span> คะแนน
+            </div>
+          </div>
+
+          <!-- Main Quiz Interactive Grid -->
+          <div class="quiz-main-grid">
+
+            <!-- Left: Constellation Visualizer -->
+            <div class="constellation-viewer-card">
+              <div class="viewer-header">
+                <div class="constellation-tag">
+                  <span class="symbol" id="constellation-symbol">♈</span>
+                  <span id="constellation-name">ราศีเมษ</span>
+                </div>
+                <div class="viewer-controls-group">
+                  <button class="viewer-tool-btn active" id="btn-toggle-lines" title="เปิด/ปิดเส้นโยงกลุ่มดาว">
+                    ✨ <span id="lines-toggle-text">เส้นโยง: เปิด</span>
+                  </button>
+                  <button class="viewer-tool-btn active" id="btn-toggle-glow" title="เปิด/ปิดแสงประกายความสว่างดาว">
+                    🌟 <span id="glow-toggle-text">แสงดาว: เปิด</span>
+                  </button>
+                  <button class="btn-overlay-toggle" id="btn-toggle-overlay" title="เปิด/ปิดภาพร่างจินตนาการ">
+                    👁️ <span id="overlay-toggle-text">ภาพร่างจริง</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="constellation-svg-stage" id="svg-stage">
+                <!-- Constellation SVG dynamically injected by JS -->
+                <svg id="constellation-svg" class="constellation-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG content -->
+                </svg>
+              </div>
+
+              <div class="viewer-footer-tip" id="star-guide-text">
+                💡 นำเมาส์ชี้ที่ดาวดวงใหญ่เพื่อดูชื่อดาวฤกษ์สว่าง
+              </div>
+            </div>
+
+            <!-- Right: Question, Choices & Lifelines -->
+            <div class="quiz-action-card">
+              
+              <div class="question-box">
+                <div class="question-label">คำถามลับแห่งดวงดาว ❓</div>
+                <div class="question-text" id="question-prompt-text">
+                  กลุ่มดาวนี้มีรูปร่างคล้ายกับอะไรมากที่สุด?
+                </div>
+              </div>
+
+              <!-- 4 Choices -->
+              <div class="options-grid" id="options-container">
+                <!-- Option buttons dynamically generated -->
+              </div>
+
+              <!-- Lifelines & Actions Bar -->
+              <div class="lifelines-bar">
+                <button class="lifeline-btn" id="btn-hint-peek" title="ส่องภาพร่าง 3 วินาที">
+                  <span class="btn-icon">👓</span>
+                  <span>แว่นตามองทะลุ</span>
+                </button>
+                <button class="lifeline-btn" id="btn-hint-5050" title="ตัด 2 ตัวเลือกที่ผิดออก">
+                  <span class="btn-icon">✂️</span>
+                  <span>ตัด 50:50</span>
+                </button>
+                <button class="lifeline-btn" id="btn-hint-clue" title="ดูข้อความบอกใบ้">
+                  <span class="btn-icon">💡</span>
+                  <span>คำใบ้ลับ</span>
+                </button>
+                <button class="lifeline-btn lifeline-skip" id="btn-skip-question" title="ข้ามข้อนี้ไปดูเฉลยและทำข้อถัดไป">
+                  <span class="btn-icon">⏭️</span>
+                  <span>ข้ามข้อ</span>
+                </button>
+              </div>
+
+              <!-- Feedback & Fun Fact Card (Revealed upon answering) -->
+              <div class="answer-feedback-card" id="feedback-card">
+                <div class="feedback-header" id="feedback-title">
+                  <span>🎉</span> ถูกต้องแล้ว เก่งมาก!
+                </div>
+                <div class="feedback-fun-fact" id="feedback-funfact">
+                  <!-- Fun fact injected here -->
+                </div>
+                <button class="btn-next-question" id="btn-next-question">
+                  <span>ข้อถัดไป ➔</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. RESULT / SUMMARY SCREEN -->
+      <section id="screen-result" class="screen">
+        <div class="glass-panel result-container">
+          <div class="result-trophy">🏆</div>
+          <h2 class="result-title">การเดินทางสิ้นสุดแล้ว!</h2>
+          <p class="result-subtitle" id="result-status-msg">
+            ยินดีด้วย! น้องคือนักดาราศาสตร์น้อยผู้เปี่ยมด้วยจินตนาการ
+          </p>
+
+          <div class="result-stats-row">
+            <div class="stat-box">
+              <div class="stat-val" id="res-score">0</div>
+              <div class="stat-lbl">คะแนนรวม</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="res-accuracy">0%</div>
+              <div class="stat-lbl">ความแม่นยำ</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="res-streak">0</div>
+              <div class="stat-lbl">คอมโบสูงสุด</div>
+            </div>
+          </div>
+
+          <!-- Certificate Generator Box -->
+          <div class="cert-action-box">
+            <h3>📜 รับเกียรติบัตรนักดาราศาสตร์น้อย</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">
+              พิมพ์ชื่อของน้องเพื่อสร้างใบประกาศนียบัตรอวกาศสุดเท่
+            </p>
+            <div class="cert-input-row">
+              <input type="text" id="kid-name-input" class="kid-name-input" placeholder="พิมพ์ชื่อ-นามสกุล..." maxlength="30" value="นักดาราศาสตร์ตัวจิ๋ว">
+              <button class="btn-cert-generate" id="btn-show-cert">✨ ดูเกียรติบัตร</button>
+            </div>
+          </div>
+
+          <div class="result-buttons">
+            <button class="btn-primary" id="btn-play-again">
+              <span>🔄 เล่นใหม่อีกครั้ง</span>
+            </button>
+            <button class="btn-secondary" id="btn-back-home">
+              <span>🏠 หน้าแรก</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- 4. CODEX MODAL (สารานุกรม 12 จักราศี) -->
+  <div class="modal-backdrop" id="modal-codex">
+    <div class="codex-modal">
+      <div class="modal-header">
+        <h2>📖 สารานุกรม 12 จักราศี (Stargazer Codex)</h2>
+        <button class="btn-close-modal" id="btn-close-codex">✕</button>
+      </div>
+      <div class="codex-grid-container" id="codex-list">
+        <!-- 12 Zodiac Cards injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.1 HINT MODAL (หน้าต่างคำใบ้ลับ) -->
+  <div class="modal-backdrop" id="modal-hint">
+    <div class="codex-modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2>💡 คำใบ้ลับแห่งดวงดาว</h2>
+        <button class="btn-close-modal" id="btn-close-hint">✕</button>
+      </div>
+      <div class="hint-modal-body">
+        <div class="hint-icon-large" id="hint-modal-icon">🔍</div>
+        <h3 class="hint-constellation-title" id="hint-modal-title">ราศี...</h3>
+        <p class="hint-modal-text" id="hint-modal-text">ข้อความคำใบ้...</p>
+        <button class="btn-primary" id="btn-confirm-hint" style="width: 100%; justify-content: center; margin-top: 18px;">
+          <span>✨ เข้าใจแล้ว ลองทายดู!</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CERTIFICATE PREVIEW MODAL -->
+  <div class="modal-backdrop" id="modal-certificate">
+    <div class="codex-modal" style="max-width: 680px;">
+      <div class="modal-header">
+        <h2>🎖️ เกียรติบัตรนักดาราศาสตร์น้อย</h2>
+        <button class="btn-close-modal" id="btn-close-cert">✕</button>
+      </div>
+      <div class="cert-modal-content">
+        <canvas id="certificate-canvas" width="1000" height="700"></canvas>
+        <div class="cert-btn-group">
+          <button class="btn-primary" id="btn-download-cert">
+            <span>💾 บันทึกรูปภาพ (Download)</span>
+          </button>
+          <button class="btn-secondary" id="btn-print-cert">
+            <span>🖨️ พิมพ์เกียรติบัตร (Print)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/constellations.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/starfield.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

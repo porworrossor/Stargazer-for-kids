@@ -1,0 +1,1186 @@
+{
+  "aries": [
+    {
+      "id": 1,
+      "x": 381,
+      "y": 196,
+      "r": 9,
+      "name": "ฮามัล (Hamal - α Ari)",
+      "mag": 2.0,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 2,
+      "x": 446,
+      "y": 255,
+      "r": 7.5,
+      "name": "เชอราทาน (Sheratan - β Ari)",
+      "mag": 2.64,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 3,
+      "x": 452,
+      "y": 289,
+      "r": 6.5,
+      "name": "เมซาร์ทิม (Mesarthim - γ Ari)",
+      "mag": 3.88,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 4,
+      "x": 48,
+      "y": 279,
+      "r": 5.5,
+      "name": "โบเทน (Botein - δ Ari)",
+      "mag": 4.35,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 5,
+      "x": 160,
+      "y": 111,
+      "r": 6.5,
+      "name": "ภารณี (Bharani - 41 Ari)",
+      "mag": 3.61,
+      "bright": false,
+      "color": "#A8DADC"
+    }
+  ],
+  "taurus": [
+    {
+      "id": 1,
+      "x": 239,
+      "y": 235,
+      "r": 11,
+      "name": "อัลเดบารัน (Aldebaran - α Tau ตาแดง)",
+      "mag": 0.85,
+      "bright": true,
+      "color": "#FF4757"
+    },
+    {
+      "id": 2,
+      "x": 83,
+      "y": 77,
+      "r": 9,
+      "name": "เอลนาธ (Elnath - β Tau ปลายเขาเหนือ)",
+      "mag": 1.65,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 3,
+      "x": 48,
+      "y": 174,
+      "r": 7.5,
+      "name": "เทียนกวาน (Tianguan - ζ Tau ปลายเขาใต้)",
+      "mag": 2.97,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 4,
+      "x": 262,
+      "y": 200,
+      "r": 6.5,
+      "name": "ไอน์ (Ain - ε Tau ตาซ้าย)",
+      "mag": 3.53,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 5,
+      "x": 289,
+      "y": 246,
+      "r": 6.5,
+      "name": "พรีมา ไฮยาดูม (γ Tau ยอดจมูก V)",
+      "mag": 3.65,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 6,
+      "x": 279,
+      "y": 221,
+      "r": 6.5,
+      "name": "เซกุนดา ไฮยาดูม (δ1 Tau)",
+      "mag": 3.76,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 7,
+      "x": 262,
+      "y": 243,
+      "r": 6.5,
+      "name": "ทีตา ทอไร (θ2 Tau)",
+      "mag": 3.4,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 8,
+      "x": 348,
+      "y": 287,
+      "r": 6.5,
+      "name": "แลมบ์ดา ทอไร (λ Tau อกวัว)",
+      "mag": 3.41,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 9,
+      "x": 452,
+      "y": 323,
+      "r": 6.5,
+      "name": "ซี ทอไร (ξ Tau ขาหน้า)",
+      "mag": 3.73,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 10,
+      "x": 389,
+      "y": 136,
+      "r": 7.5,
+      "name": "อัลไซโอนี (Alcyone - กระจุกดาวลูกไก่ M45)",
+      "mag": 2.87,
+      "bright": true,
+      "color": "#00F0FF"
+    }
+  ],
+  "gemini": [
+    {
+      "id": 1,
+      "x": 123,
+      "y": 48,
+      "r": 9,
+      "name": "คาสเตอร์ (Castor - α Gem หัวพี่)",
+      "mag": 1.58,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 2,
+      "x": 84,
+      "y": 110,
+      "r": 11,
+      "name": "พอลลักซ์ (Pollux - β Gem หัวน้อง)",
+      "mag": 1.14,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 3,
+      "x": 332,
+      "y": 296,
+      "r": 9,
+      "name": "อัลฮีนา (Alhena - γ Gem เท้าพอลลักซ์)",
+      "mag": 1.93,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 4,
+      "x": 176,
+      "y": 207,
+      "r": 6.5,
+      "name": "วาซัต (Wasat - δ Gem เอวพอลลักซ์)",
+      "mag": 3.5,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 5,
+      "x": 309,
+      "y": 156,
+      "r": 7.5,
+      "name": "เมบซูดา (Mebsuta - ε Gem เอวคาสเตอร์)",
+      "mag": 3.06,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 6,
+      "x": 235,
+      "y": 229,
+      "r": 5.5,
+      "name": "เมกบูดา (Mekbuda - ζ Gem เข่าพอลลักซ์)",
+      "mag": 4.01,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 7,
+      "x": 416,
+      "y": 198,
+      "r": 6.5,
+      "name": "โพรพัส (Propus - η Gem ปลายเท้าคาสเตอร์)",
+      "mag": 3.32,
+      "bright": false,
+      "color": "#FF7675"
+    },
+    {
+      "id": 8,
+      "x": 387,
+      "y": 198,
+      "r": 7.5,
+      "name": "เทจัต (Tejat - μ Gem เท้าคาสเตอร์)",
+      "mag": 2.87,
+      "bright": true,
+      "color": "#FF7675"
+    },
+    {
+      "id": 9,
+      "x": 87,
+      "y": 168,
+      "r": 6.5,
+      "name": "แคปปา เจมินอร์ม (κ Gem ไหล่พอลลักซ์)",
+      "mag": 3.57,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 10,
+      "x": 156,
+      "y": 113,
+      "r": 6.5,
+      "name": "ไอโอตา เจมินอร์ม (ι Gem ไหล่คาสเตอร์)",
+      "mag": 3.78,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 11,
+      "x": 304,
+      "y": 352,
+      "r": 6.5,
+      "name": "อัลซีร์ (Alzirr - ξ Gem ปลายเท้าพอลลักซ์)",
+      "mag": 3.35,
+      "bright": false,
+      "color": "#FFD27D"
+    }
+  ],
+  "cancer": [
+    {
+      "id": 1,
+      "x": 327,
+      "y": 352,
+      "r": 6.5,
+      "name": "อัลตาร์ฟ (Altarf - β Cnc ปลายก้ามใต้)",
+      "mag": 3.53,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 2,
+      "x": 173,
+      "y": 310,
+      "r": 5.5,
+      "name": "อาคูเบนส์ (Acubens - α Cnc ก้ามตะวันออก)",
+      "mag": 4.26,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 3,
+      "x": 223,
+      "y": 213,
+      "r": 6.5,
+      "name": "อาเซลลัส ออสตราลิส (δ Cnc กลางกระดองใต้)",
+      "mag": 3.94,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 4,
+      "x": 229,
+      "y": 161,
+      "r": 5.5,
+      "name": "อาเซลลัส บอเรียลิส (γ Cnc กลางกระดองเหนือ)",
+      "mag": 4.66,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 5,
+      "x": 216,
+      "y": 48,
+      "r": 5.5,
+      "name": "ไอโอตา แคนครี (ι Cnc ก้ามเหนือ)",
+      "mag": 4.03,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 6,
+      "x": 239,
+      "y": 189,
+      "r": 7.5,
+      "name": "กระจุกดาวรังผึ้ง (Beehive / M44 Praesepe)",
+      "mag": 3.1,
+      "bright": true,
+      "color": "#00F0FF"
+    }
+  ],
+  "leo": [
+    {
+      "id": 1,
+      "x": 378,
+      "y": 297,
+      "r": 9,
+      "name": "เรกูลัส (Regulus - α Leo หัวใจสิงห์)",
+      "mag": 1.36,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 2,
+      "x": 48,
+      "y": 261,
+      "r": 9,
+      "name": "เดเนโบลา (Denebola - β Leo หางสิงโต)",
+      "mag": 2.14,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 3,
+      "x": 340,
+      "y": 188,
+      "r": 9,
+      "name": "แอลเจอบา (Algieba - γ Leo คอสิงโต)",
+      "mag": 2.01,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 4,
+      "x": 163,
+      "y": 179,
+      "r": 7.5,
+      "name": "โซสมา (Zosma - δ Leo สะโพกบน)",
+      "mag": 2.56,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 5,
+      "x": 452,
+      "y": 134,
+      "r": 7.5,
+      "name": "อัลเกนูบี (Algenubi - ε Leo ยอดหัวสิงโต)",
+      "mag": 2.97,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 6,
+      "x": 351,
+      "y": 138,
+      "r": 6.5,
+      "name": "อัดฮาเฟรา (Adhafera - ζ Leo แผงคอ)",
+      "mag": 3.43,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 7,
+      "x": 382,
+      "y": 231,
+      "r": 6.5,
+      "name": "อัลจับฮาห์ (Al Jabhah - η Leo อกสิงโต)",
+      "mag": 3.48,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 8,
+      "x": 162,
+      "y": 249,
+      "r": 6.5,
+      "name": "เชอร์ทาน (Chertan - θ Leo สะโพกล่าง)",
+      "mag": 3.33,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 9,
+      "x": 429,
+      "y": 103,
+      "r": 6.5,
+      "name": "ราซาลาส (Rasalas - μ Leo ปลายจมูกสิงห์)",
+      "mag": 3.88,
+      "bright": false,
+      "color": "#FFA502"
+    }
+  ],
+  "virgo": [
+    {
+      "id": 1,
+      "x": 189,
+      "y": 323,
+      "r": 11,
+      "name": "สไปกา (Spica - α Vir รวงข้าวสาลี)",
+      "mag": 0.98,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 2,
+      "x": 452,
+      "y": 179,
+      "r": 6.5,
+      "name": "ซาวิยาวา (Zavijava - β Vir ศีรษะ)",
+      "mag": 3.59,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 3,
+      "x": 310,
+      "y": 215,
+      "r": 7.5,
+      "name": "พอริมา (Porrima - γ Vir ไหล่/อก)",
+      "mag": 2.74,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 4,
+      "x": 272,
+      "y": 161,
+      "r": 6.5,
+      "name": "มิเนเลาวา (Minelauva - δ Vir เอว)",
+      "mag": 3.38,
+      "bright": false,
+      "color": "#FF4757"
+    },
+    {
+      "id": 5,
+      "x": 253,
+      "y": 77,
+      "r": 7.5,
+      "name": "วินเดเมียทริกซ์ (Vindemiatrix - ε Vir ปลายปีกขวา)",
+      "mag": 2.85,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 6,
+      "x": 163,
+      "y": 192,
+      "r": 6.5,
+      "name": "เฮเซ (Heze - ζ Vir สะโพก)",
+      "mag": 3.38,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 7,
+      "x": 371,
+      "y": 191,
+      "r": 6.5,
+      "name": "ซาเนียห์ (Zaniah - η Vir แขนซ้าย)",
+      "mag": 3.89,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 8,
+      "x": 48,
+      "y": 266,
+      "r": 5.5,
+      "name": "เซียร์มา (Syrma - ι Vir ชายกระโปรง/เท้า)",
+      "mag": 4.07,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 9,
+      "x": 57,
+      "y": 313,
+      "r": 5.5,
+      "name": "คัง (Kang - κ Vir ปลายเท้า)",
+      "mag": 4.18,
+      "bright": false,
+      "color": "#00F0FF"
+    }
+  ],
+  "libra": [
+    {
+      "id": 1,
+      "x": 333,
+      "y": 147,
+      "r": 7.5,
+      "name": "ซูเบนเอลเกนูบี (Zubenelgenubi - α2 Lib จานใต้)",
+      "mag": 2.75,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 2,
+      "x": 242,
+      "y": 48,
+      "r": 7.5,
+      "name": "ซูเบนเอลเชมาลี (Zubeneschamali - β Lib จานเหนือ)",
+      "mag": 2.61,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 3,
+      "x": 178,
+      "y": 129,
+      "r": 6.5,
+      "name": "ซูเบนเอลอัครับ (Zubenelakrab - γ Lib ขอบจานตะวันออก)",
+      "mag": 3.91,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 4,
+      "x": 287,
+      "y": 285,
+      "r": 6.5,
+      "name": "บราเคียม (Brachium - σ Lib ฐานล่าง)",
+      "mag": 3.25,
+      "bright": true,
+      "color": "#FF4757"
+    },
+    {
+      "id": 5,
+      "x": 172,
+      "y": 328,
+      "r": 6.5,
+      "name": "อิปซิลอน ไลบรี (υ Lib สายถ่วง)",
+      "mag": 3.6,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 6,
+      "x": 167,
+      "y": 352,
+      "r": 6.5,
+      "name": "เทา ไลบรี (τ Lib)",
+      "mag": 3.66,
+      "bright": false,
+      "color": "#00F0FF"
+    }
+  ],
+  "scorpio": [
+    {
+      "id": 1,
+      "x": 314,
+      "y": 134,
+      "r": 11,
+      "name": "แอนทาเรส (Antares - α Sco หัวใจสีแดง)",
+      "mag": 1.06,
+      "bright": true,
+      "color": "#FF4757"
+    },
+    {
+      "id": 2,
+      "x": 141,
+      "y": 272,
+      "r": 9,
+      "name": "ชอลา (Shaula - λ Sco ปลายเหล็กใน)",
+      "mag": 1.62,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 3,
+      "x": 131,
+      "y": 349,
+      "r": 9,
+      "name": "ซาร์กัส (Sargas - θ Sco โค้งหางล่าง)",
+      "mag": 1.86,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 4,
+      "x": 393,
+      "y": 85,
+      "r": 7.5,
+      "name": "ดชูบา (Dschubba - δ Sco หน้าผากแมงป่อง)",
+      "mag": 2.29,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 5,
+      "x": 258,
+      "y": 236,
+      "r": 7.5,
+      "name": "ลาราวาก (Larawag - ε Sco โคนหาง)",
+      "mag": 2.29,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 6,
+      "x": 117,
+      "y": 297,
+      "r": 7.5,
+      "name": "เกอร์แทบ (Girtab - κ Sco หางตวัด)",
+      "mag": 2.39,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 7,
+      "x": 379,
+      "y": 48,
+      "r": 7.5,
+      "name": "กราฟเฟียส (Acrab - β Sco ก้ามบน)",
+      "mag": 2.56,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 8,
+      "x": 149,
+      "y": 275,
+      "r": 7.5,
+      "name": "เลซัท (Lesath - υ Sco ปลายเหล็กในคู่)",
+      "mag": 2.7,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 9,
+      "x": 397,
+      "y": 130,
+      "r": 7.5,
+      "name": "ฟาง (Fang - π Sco ก้ามล่าง)",
+      "mag": 2.89,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 10,
+      "x": 337,
+      "y": 123,
+      "r": 7.5,
+      "name": "อัลนิยัต (Alniyat - σ Sco อกแมงป่อง)",
+      "mag": 2.9,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 11,
+      "x": 297,
+      "y": 157,
+      "r": 7.5,
+      "name": "ไพเคาฮาเล (Tau Sco อกล่าง)",
+      "mag": 2.82,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 12,
+      "x": 254,
+      "y": 285,
+      "r": 7.5,
+      "name": "มิว สกอร์ปี (μ1 Sco ท้อง)",
+      "mag": 3.0,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 13,
+      "x": 246,
+      "y": 341,
+      "r": 6.5,
+      "name": "เซตา สกอร์ปี (ζ2 Sco ก้นหาง)",
+      "mag": 3.62,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 14,
+      "x": 199,
+      "y": 352,
+      "r": 6.5,
+      "name": "อีตา สกอร์ปี (η Sco)",
+      "mag": 3.32,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 15,
+      "x": 103,
+      "y": 312,
+      "r": 7.5,
+      "name": "ไอโอตา สกอร์ปี (ι1 Sco)",
+      "mag": 2.99,
+      "bright": false,
+      "color": "#FFD27D"
+    }
+  ],
+  "sagittarius": [
+    {
+      "id": 1,
+      "x": 308,
+      "y": 306,
+      "r": 9,
+      "name": "เคาส์ ออสตราลิส (Kaus Australis - ε Sgr ฐานกาน้ำ)",
+      "mag": 1.79,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 2,
+      "x": 176,
+      "y": 150,
+      "r": 9,
+      "name": "นูนาคี (Nunki - σ Sgr หูกาบน)",
+      "mag": 2.05,
+      "bright": true,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 3,
+      "x": 145,
+      "y": 219,
+      "r": 7.5,
+      "name": "อัสเซลลา (Ascella - ζ Sgr หูกาล่าง)",
+      "mag": 2.6,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 4,
+      "x": 321,
+      "y": 218,
+      "r": 7.5,
+      "name": "เคาส์ มีเดีย (Kaus Media - δ Sgr กลางพวยกา)",
+      "mag": 2.72,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 5,
+      "x": 292,
+      "y": 133,
+      "r": 7.5,
+      "name": "เคาส์ โบเรียลิส (Kaus Borealis - λ Sgr ยอดฝากา)",
+      "mag": 2.82,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 6,
+      "x": 385,
+      "y": 230,
+      "r": 7.5,
+      "name": "อัลนาสล์ (Alnasl - γ2 Sgr ปลายพวยกา)",
+      "mag": 2.98,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 7,
+      "x": 217,
+      "y": 164,
+      "r": 7.5,
+      "name": "ฟาย ซากิตตารี (φ Sgr ฝากาหลัง)",
+      "mag": 3.17,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 8,
+      "x": 127,
+      "y": 176,
+      "r": 6.5,
+      "name": "เทา ซากิตตารี (τ Sgr หูกลาง)",
+      "mag": 3.32,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 9,
+      "x": 115,
+      "y": 48,
+      "r": 7.5,
+      "name": "อัลบัลดาห์ (Albaldah - π Sgr หัวคนยิงธนู)",
+      "mag": 2.88,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 10,
+      "x": 335,
+      "y": 352,
+      "r": 7.5,
+      "name": "อีตา ซากิตตารี (η Sgr ปลายคันธนูล่าง)",
+      "mag": 3.1,
+      "bright": false,
+      "color": "#FF4757"
+    }
+  ],
+  "capricorn": [
+    {
+      "id": 1,
+      "x": 48,
+      "y": 131,
+      "r": 7.5,
+      "name": "เดเนบ อัลเจดี (Deneb Algedi - δ Cap หางปลา)",
+      "mag": 2.85,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 2,
+      "x": 439,
+      "y": 105,
+      "r": 7.5,
+      "name": "ดาบิห์ (Dabih - β Cap เขาแพะ)",
+      "mag": 3.05,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 3,
+      "x": 452,
+      "y": 62,
+      "r": 6.5,
+      "name": "อัลเจดี (Algedi - α2 Cap เขาแพะบน)",
+      "mag": 3.58,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 4,
+      "x": 80,
+      "y": 141,
+      "r": 6.5,
+      "name": "นาชิรา (Nashira - γ Cap ครีบหาง)",
+      "mag": 3.69,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 5,
+      "x": 140,
+      "y": 251,
+      "r": 6.5,
+      "name": "เซตา แคปริคอร์นิ (ζ Cap ท้องปลาล่าง)",
+      "mag": 3.77,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 6,
+      "x": 235,
+      "y": 152,
+      "r": 5.5,
+      "name": "ทีตา แคปริคอร์นิ (θ Cap สันหลังกลาง)",
+      "mag": 4.08,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 7,
+      "x": 299,
+      "y": 338,
+      "r": 5.5,
+      "name": "โอเมกา แคปริคอร์นิ (ω Cap ก้นสามเหลี่ยม)",
+      "mag": 4.12,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 8,
+      "x": 325,
+      "y": 306,
+      "r": 5.5,
+      "name": "ไซ แคปริคอร์นิ (ψ Cap ท้องล่างหน้า)",
+      "mag": 4.13,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 9,
+      "x": 161,
+      "y": 144,
+      "r": 5.5,
+      "name": "ไอโอตา แคปริคอร์นิ (ι Cap หลัง)",
+      "mag": 4.28,
+      "bright": false,
+      "color": "#FFD27D"
+    }
+  ],
+  "aquarius": [
+    {
+      "id": 1,
+      "x": 327,
+      "y": 150,
+      "r": 7.5,
+      "name": "ซาดาลซูด (Sadalsuud - β Aqr ไหล่ซ้าย)",
+      "mag": 2.9,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 2,
+      "x": 229,
+      "y": 83,
+      "r": 7.5,
+      "name": "ซาดาลเมลิก (Sadalmelik - α Aqr ไหล่ขวา)",
+      "mag": 2.95,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 3,
+      "x": 90,
+      "y": 268,
+      "r": 6.5,
+      "name": "สแคต (Skat - δ Aqr ขา/ปลายสายน้ำ)",
+      "mag": 3.27,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 4,
+      "x": 452,
+      "y": 195,
+      "r": 6.5,
+      "name": "อัลบาลิ (Albali - ε Aqr มือซ้าย)",
+      "mag": 3.78,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 5,
+      "x": 184,
+      "y": 102,
+      "r": 6.5,
+      "name": "ซาดาคเบีย (Sadachbia - γ Aqr ปากเหยือก Y)",
+      "mag": 3.86,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 6,
+      "x": 164,
+      "y": 86,
+      "r": 6.5,
+      "name": "เซตา แอควารี (ζ Aqr กลางปากเหยือก)",
+      "mag": 3.65,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 7,
+      "x": 145,
+      "y": 85,
+      "r": 5.5,
+      "name": "อีตา แอควารี (η Aqr ปลายเหยือกบน)",
+      "mag": 4.04,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 8,
+      "x": 198,
+      "y": 176,
+      "r": 5.5,
+      "name": "อันชา (Ancha - θ Aqr สะโพก)",
+      "mag": 4.17,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 9,
+      "x": 96,
+      "y": 173,
+      "r": 6.5,
+      "name": "แลมบ์ดา แอควารี (λ Aqr สายน้ำ)",
+      "mag": 3.73,
+      "bright": false,
+      "color": "#FF4757"
+    },
+    {
+      "id": 10,
+      "x": 174,
+      "y": 71,
+      "r": 5.5,
+      "name": "พาย แอควารี (π Aqr ยอดเหยือก)",
+      "mag": 4.66,
+      "bright": false,
+      "color": "#00F0FF"
+    },
+    {
+      "id": 11,
+      "x": 48,
+      "y": 329,
+      "r": 6.5,
+      "name": "88 แอควารี (c2 Aqr ปลายสายน้ำล่าง)",
+      "mag": 3.68,
+      "bright": false,
+      "color": "#FFA502"
+    }
+  ],
+  "pisces": [
+    {
+      "id": 1,
+      "x": 48,
+      "y": 253,
+      "r": 6.5,
+      "name": "อัลริชา (Alrescha - α Psc ปมผูกริบบิ้น)",
+      "mag": 3.82,
+      "bright": true,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 2,
+      "x": 120,
+      "y": 133,
+      "r": 6.5,
+      "name": "อัลเฟิร์ก (Alpherg - η Psc ปลาเหนือ)",
+      "mag": 3.62,
+      "bright": true,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 3,
+      "x": 438,
+      "y": 248,
+      "r": 6.5,
+      "name": "แกมมา พิสเซียม (γ Psc วงปลาตะวันตก)",
+      "mag": 3.7,
+      "bright": true,
+      "color": "#FFA502"
+    },
+    {
+      "id": 4,
+      "x": 87,
+      "y": 192,
+      "r": 5.5,
+      "name": "โอไมครอน พิสเซียม (ο Psc สายเหนือ 1)",
+      "mag": 4.26,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 5,
+      "x": 97,
+      "y": 227,
+      "r": 5.5,
+      "name": "นิว พิสเซียม (ν Psc สายเหนือ 2)",
+      "mag": 4.45,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 6,
+      "x": 123,
+      "y": 220,
+      "r": 5.5,
+      "name": "มิว พิสเซียม (μ Psc สายเหนือ 3)",
+      "mag": 4.84,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 7,
+      "x": 68,
+      "y": 249,
+      "r": 5.5,
+      "name": "ไซ พิสเซียม (ξ Psc สายเหนือ 4)",
+      "mag": 4.61,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 8,
+      "x": 221,
+      "y": 207,
+      "r": 5.5,
+      "name": "เดลตา พิสเซียม (δ Psc สายตะวันตก 1)",
+      "mag": 4.44,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 9,
+      "x": 188,
+      "y": 204,
+      "r": 5.5,
+      "name": "เอปซิลอน พิสเซียม (ε Psc สายตะวันตก 2)",
+      "mag": 4.27,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 10,
+      "x": 162,
+      "y": 207,
+      "r": 5.5,
+      "name": "เซตา พิสเซียม (ζ Psc สายตะวันตก 3)",
+      "mag": 5.21,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 11,
+      "x": 412,
+      "y": 218,
+      "r": 5.5,
+      "name": "ทีตา พิสเซียม (θ Psc วงปลา)",
+      "mag": 4.27,
+      "bright": false,
+      "color": "#FFA502"
+    },
+    {
+      "id": 12,
+      "x": 384,
+      "y": 225,
+      "r": 5.5,
+      "name": "ไอโอตา พิสเซียม (ι Psc วงปลา)",
+      "mag": 4.13,
+      "bright": false,
+      "color": "#FFD27D"
+    },
+    {
+      "id": 13,
+      "x": 379,
+      "y": 262,
+      "r": 5.5,
+      "name": "แลมบ์ดา พิสเซียม (λ Psc วงปลา)",
+      "mag": 4.49,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 14,
+      "x": 414,
+      "y": 267,
+      "r": 5.5,
+      "name": "แคปปา พิสเซียม (κ Psc วงปลา)",
+      "mag": 4.95,
+      "bright": false,
+      "color": "#FFFFFF"
+    },
+    {
+      "id": 15,
+      "x": 452,
+      "y": 231,
+      "r": 5.5,
+      "name": "7 พิสเซียม (7 Psc วงปลา)",
+      "mag": 5.05,
+      "bright": false,
+      "color": "#FFA502"
+    }
+  ]
+}

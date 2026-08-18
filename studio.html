@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constellation Studio: ห้องปรับแต่งกลุ่มดาว 12 จักราศี</title>
+  <meta name="description" content="สตูดิโอสำหรับดู ตรวจสอบ และปรับแต่งตำแหน่งดาว เส้นโยง และภาพร่างเวกเตอร์ของกลุ่มดาว 12 ราศีแบบเรียลไทม์">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/studio.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+</head>
+<body>
+
+  <!-- Dynamic Starfield Background Canvas -->
+  <canvas id="starfield-canvas"></canvas>
+
+  <div class="studio-wrapper">
+
+    <!-- Top Global Header -->
+    <header class="studio-header">
+      <div class="studio-header-left">
+        <a href="index.html" class="logo-area" style="text-decoration: none;" title="กลับไปหน้าเกมหลัก">
+          <div class="logo-icon">🪐</div>
+          <div class="logo-text">
+            <h1 style="font-size: 1.3rem;">Constellation Studio</h1>
+            <span style="font-size: 0.8rem;">ห้องปรับแต่ง & ตรวจสอบกลุ่มดาว 12 จักราศี</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="studio-header-right">
+        <!-- View Mode Switcher -->
+        <div style="display: flex; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 20px; border: 1px solid var(--card-border);">
+          <button id="btn-mode-studio" class="tool-toggle-btn active" style="border: none;">
+            🛠️ <span>ห้องปรับแต่ง (Studio)</span>
+          </button>
+          <button id="btn-mode-gallery" class="tool-toggle-btn" style="border: none;">
+            🌌 <span>ดูภาพรวม 12 ราศี (Gallery)</span>
+          </button>
+        </div>
+
+        <button id="btn-copy-code" class="header-btn" title="คัดลอกโค้ด JavaScript ของ 12 ราศีทั้งหมด">
+          📋 <span>คัดลอกโค้ด JS</span>
+        </button>
+
+        <button id="btn-download-js" class="header-btn" title="ดาวน์โหลด constellations.js ทันที">
+          📥 <span>บันทึกไฟล์ JS</span>
+        </button>
+
+        <a href="index.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem; text-decoration: none;">
+          🎮 <span>เล่นเกมทายดาว</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- 12 Zodiac Navigation Chips Bar -->
+    <nav class="zodiac-nav-bar" id="zodiac-nav-bar">
+      <!-- 12 Zodiac Chips injected dynamically -->
+    </nav>
+
+    <!-- SECTION 1: Single Constellation Deep Studio Workspace -->
+    <section id="studio-main-workspace" class="studio-workspace">
+      
+      <!-- Left: Interactive Canvas & Stage -->
+      <div class="canvas-panel">
+        
+        <div class="canvas-toolbar">
+          <div class="canvas-title-group">
+            <h2 id="studio-constellation-title">♈ ราศีเมษ (Aries)</h2>
+            <span id="studio-zodiac-name" style="font-size: 0.85rem; color: var(--accent-cyan); background: rgba(0, 240, 255, 0.1); padding: 2px 8px; border-radius: 12px;">Aries</span>
+          </div>
+
+          <div class="toolbar-toggles">
+            <button id="toggle-grid" class="tool-toggle-btn active" title="แสดง/ซ่อนเส้นตารางพิกัด X/Y">
+              📐 <span>ตารางพิกัด</span>
+            </button>
+            <button id="toggle-labels" class="tool-toggle-btn active" title="แสดง/ซ่อนชื่อดาว">
+              🏷️ <span>ชื่อดาว</span>
+            </button>
+            <button id="toggle-lines" class="tool-toggle-btn active" title="แสดง/ซ่อนเส้นโยงดาว">
+              ✨ <span>เส้นโยง</span>
+            </button>
+            <button id="toggle-glow" class="tool-toggle-btn active" title="แสดง/ซ่อนแสงประกายดาว">
+              🌟 <span>แสงดาว</span>
+            </button>
+            <button id="toggle-art" class="tool-toggle-btn active" title="แสดง/ซ่อนภาพร่างเวกเตอร์">
+              👁️ <span>ภาพร่างจริง</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive SVG Stage (500 x 400) -->
+        <div class="studio-svg-container" id="studio-svg-container">
+          <svg id="studio-svg-stage" class="studio-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dynamic SVG elements -->
+          </svg>
+        </div>
+
+        <div class="canvas-footer">
+          <div>💡 <strong>วิธีใช้:</strong> คลิกและลากดาวดวงใดก็ได้บนจอ เพื่อย้ายตำแหน่งพิกัดแบบเรียลไทม์</div>
+          <div class="coord-readout" id="mouse-coords-readout">X: 0, Y: 0</div>
+        </div>
+
+      </div>
+
+      <!-- Right: Inspector & Tuner Controls -->
+      <div class="inspector-panel">
+        
+        <!-- Inspector Navigation Tabs -->
+        <div class="inspector-tabs">
+          <button class="inspector-tab-btn active" data-tab="stars">🌟 ดวงดาว (Stars)</button>
+          <button class="inspector-tab-btn" data-tab="lines">📐 เส้นโยง (Lines)</button>
+          <button class="inspector-tab-btn" data-tab="art">🎨 ภาพร่าง (Art Overlay)</button>
+          <button class="inspector-tab-btn" data-tab="meta">📝 ข้อมูล (Info & Quiz)</button>
+        </div>
+
+        <!-- TAB 1: STARS EDITOR -->
+        <div class="tab-pane active" id="tab-stars">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">รายการตำแหน่งดาวฤกษ์ในกลุ่ม:</span>
+            <button id="btn-add-star" class="tool-toggle-btn active" style="font-size: 0.85rem; padding: 4px 10px;">
+              ➕ เพิ่มดาวดวงใหม่
+            </button>
+          </div>
+          
+          <div class="data-card-list" id="stars-data-list">
+            <!-- Star items dynamically injected -->
+          </div>
+        </div>
+
+        <!-- TAB 2: LINES EDITOR -->
+        <div class="tab-pane" id="tab-lines">
+          <div class="lines-manager-box">
+            <span style="font-size: 0.9rem; color: var(--text-muted);">เชื่อมเส้นโยงระหว่างดาว 2 ดวง:</span>
+            
+            <div class="add-line-bar">
+              <select id="line-select-star1" class="studio-input" style="flex: 1;"></select>
+              <span style="color: var(--accent-cyan);">➔</span>
+              <select id="line-select-star2" class="studio-input" style="flex: 1;"></select>
+              <button id="btn-connect-line" class="tool-toggle-btn active" style="padding: 6px 14px;">เชื่อมเส้น 🔗</button>
+            </div>
+
+            <span style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">เส้นโยงที่มีอยู่ในปัจจุบัน (คลิก ✕ เพื่อลบ):</span>
+            <div class="lines-chips-container" id="lines-chips-container">
+              <!-- Line chips dynamically injected -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: ART OVERLAY SVG EDITOR -->
+        <div class="tab-pane" id="tab-art">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.9rem; color: var(--text-muted);">โค้ด SVG ภาพร่างเวกเตอร์ (แสดงผลสดทันทีเมื่อพิมพ์):</span>
+            </div>
+            
+            <textarea id="svg-art-textarea" class="svg-code-editor" placeholder="ใส่แท็ก SVG เช่น <path d='...' stroke='#FFD700' /> หรือ <ellipse ... />"></textarea>
+            
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+              💡 <em>เคล็ดลับ:</em> สามารถใช้คำสั่ง <code>&lt;path d="..."&gt;</code>, <code>&lt;circle&gt;</code>, <code>&lt;polygon&gt;</code> และลูกเล่นแสง <code>filter="drop-shadow(0 0 8px ...)"</code> ได้ทันที
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: METADATA & QUIZ INFO -->
+        <div class="tab-pane" id="tab-meta">
+          <div class="star-inputs-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="input-field-group">
+              <label>ชื่อภาษาไทย</label>
+              <input type="text" id="meta-thai-name" class="studio-input">
+            </div>
+            <div class="input-field-group">
+              <label>ชื่อราศี (Zodiac)</label>
+              <input type="text" id="meta-zodiac-name" class="studio-input">
+            </div>
+            <div class="input-field-group">
+              <label>ชื่อสากล (Latin)</label>
+              <input type="text" id="meta-latin-name" class="studio-input">
+            </div>
+            <div class="input-field-group">
+              <label>สัญลักษณ์ราศี</label>
+              <input type="text" id="meta-symbol" class="studio-input">
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label>คำตอบที่ถูกต้อง</label>
+            <input type="text" id="meta-correct-answer" class="studio-input">
+          </div>
+
+          <div class="input-field-group">
+            <label>คำใบ้ (Hint)</label>
+            <textarea id="meta-hint" class="studio-input" style="height: 55px;"></textarea>
+          </div>
+
+          <div class="input-field-group">
+            <label>เกร็ดน่ารู้ (Fun Fact)</label>
+            <textarea id="meta-funfact" class="studio-input" style="height: 55px;"></textarea>
+          </div>
+
+          <div class="input-field-group">
+            <label>จุดสังเกตดวงดาว (Star Guide)</label>
+            <input type="text" id="meta-starguide" class="studio-input">
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECTION 2: 12-in-1 Gallery Grid View -->
+    <section id="gallery-main-view" class="gallery-grid-view">
+      <div id="gallery-grid-container" style="display: contents;">
+        <!-- 12 Constellation Cards injected dynamically -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/constellations.js"></script>
+  <script src="js/starfield.js"></script>
+  <script src="js/studio.js"></script>
+</body>
+</html>
