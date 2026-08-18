@@ -16,6 +16,47 @@
   <!-- Dynamic Starfield Background Canvas -->
   <canvas id="starfield-canvas"></canvas>
 
+  <!-- Passcode Lock Screen Overlay (PIN: 4011) -->
+  <div class="studio-lock-overlay" id="studio-lock-screen">
+    <div class="studio-lock-card">
+      <div class="lock-icon-badge">🔒</div>
+      <h2 class="lock-title">Constellation Studio</h2>
+      <p class="lock-subtitle">กรุณาใส่รหัสผ่าน 4 หลัก เพื่อเข้าสู่โหมดปรับแต่งกลุ่มดาว</p>
+
+      <form id="form-studio-passcode" onsubmit="return false;">
+        <div class="pin-display-row">
+          <input type="password" id="studio-passcode-input" class="studio-pin-input" maxlength="4" placeholder="••••" pattern="[0-9]*" inputmode="numeric" autocomplete="off" autofocus>
+        </div>
+
+        <div class="pin-keypad-grid">
+          <button type="button" class="pin-key-btn" data-key="1">1</button>
+          <button type="button" class="pin-key-btn" data-key="2">2</button>
+          <button type="button" class="pin-key-btn" data-key="3">3</button>
+          <button type="button" class="pin-key-btn" data-key="4">4</button>
+          <button type="button" class="pin-key-btn" data-key="5">5</button>
+          <button type="button" class="pin-key-btn" data-key="6">6</button>
+          <button type="button" class="pin-key-btn" data-key="7">7</button>
+          <button type="button" class="pin-key-btn" data-key="8">8</button>
+          <button type="button" class="pin-key-btn" data-key="9">9</button>
+          <button type="button" class="pin-key-btn btn-key-clear" id="btn-pin-clear">ล้าง</button>
+          <button type="button" class="pin-key-btn" data-key="0">0</button>
+          <button type="button" class="pin-key-btn btn-key-backspace" id="btn-pin-back">⌫</button>
+        </div>
+
+        <div class="lock-error-msg" id="lock-error-msg"></div>
+
+        <div class="lock-actions-row">
+          <button type="submit" class="btn-primary lock-submit-btn" id="btn-unlock-studio">
+            🔓 ปลดล็อกเข้าใช้งาน
+          </button>
+          <a href="index.html" class="btn-secondary" style="text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center;">
+            🏠 กลับหน้าเกม
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="studio-wrapper">
 
     <!-- Top Global Header -->
@@ -47,6 +88,10 @@
 
         <button id="btn-download-js" class="header-btn" title="ดาวน์โหลด constellations.js ทันที">
           📥 <span>บันทึกไฟล์ JS</span>
+        </button>
+
+        <button id="btn-lock-studio" class="header-btn" title="ล็อกห้องปรับแต่ง" style="border-color: rgba(255, 118, 117, 0.4); color: #FF7675;">
+          🔒 <span>ล็อกสตูดิโอ</span>
         </button>
 
         <a href="index.html" class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem; text-decoration: none;">

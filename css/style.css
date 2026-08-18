@@ -398,6 +398,93 @@ header.app-header {
   animation: bounceMini 1s infinite alternate;
 }
 
+/* Game Timer Badge (Challenge Mode) */
+.game-timer-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 27, 65, 0.9);
+  border: 1.5px solid var(--accent-cyan);
+  padding: 4px 14px 4px 8px;
+  border-radius: 24px;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.game-timer-badge.low-time {
+  border-color: var(--accent-coral);
+  box-shadow: 0 0 20px rgba(255, 118, 117, 0.6);
+  animation: timerAlertPulse 0.6s infinite alternate;
+}
+
+.timer-circle-wrap {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-bg-circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 3.5;
+}
+
+.timer-progress-circle {
+  fill: none;
+  stroke: var(--accent-cyan);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear, stroke 0.3s ease;
+}
+
+.game-timer-badge.low-time .timer-progress-circle {
+  stroke: var(--accent-coral);
+}
+
+.timer-number {
+  position: absolute;
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.timer-label-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-label-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.1;
+}
+
+.timer-mode-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.game-timer-badge.low-time .timer-mode-tag {
+  color: var(--accent-coral);
+}
+
+@keyframes timerAlertPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 6px #FF7675); }
+  100% { transform: scale(1.06); filter: drop-shadow(0 0 16px #FF7675); }
+}
+
 /* Constellation Interactive Canvas Area */
 .quiz-main-grid {
   display: grid;
@@ -1172,3 +1259,160 @@ header.app-header {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-cyan);
 }
+
+/* ==========================================================================
+   Challenge Timer Selection Modal
+   ========================================================================== */
+.timer-select-modal {
+  background: linear-gradient(145deg, rgba(20, 27, 65, 0.98), rgba(10, 15, 45, 0.98));
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.25);
+}
+
+.timer-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 8px 4px;
+}
+
+.timer-modal-hero {
+  text-align: center;
+}
+
+.timer-modal-icon {
+  font-size: 2.8rem;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 12px var(--accent-cyan));
+  animation: bounceMini 1.2s infinite alternate;
+}
+
+.timer-modal-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.timer-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.timer-chip-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #FFFFFF;
+}
+
+.timer-chip-btn .chip-icon {
+  font-size: 1.4rem;
+}
+
+.timer-chip-btn .chip-time {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.timer-chip-btn .chip-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.timer-chip-btn:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--accent-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+}
+
+.timer-chip-btn.active {
+  background: rgba(0, 240, 255, 0.25);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+  transform: scale(1.03);
+}
+
+.timer-chip-btn.active .chip-time {
+  color: var(--accent-cyan);
+}
+
+.custom-timer-slider-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+.slider-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.slider-value-display {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--accent-gold);
+}
+
+.timer-range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.timer-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--accent-cyan);
+  transition: transform 0.1s;
+}
+
+.timer-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-marks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.timer-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.start-challenge-btn {
+  justify-content: center;
+  padding: 14px;
+  font-size: 1.05rem;
+}
+

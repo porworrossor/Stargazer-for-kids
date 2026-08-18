@@ -94,6 +94,21 @@
               </div>
             </div>
 
+            <!-- Timer Widget (Active in Challenge Mode) -->
+            <div class="game-timer-badge" id="quiz-timer-badge" style="display: none;">
+              <div class="timer-circle-wrap">
+                <svg class="timer-svg" viewBox="0 0 36 36">
+                  <path class="timer-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="timer-progress-circle" id="timer-progress-circle" stroke-dasharray="100, 100" stroke-dashoffset="0" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="timer-number" id="quiz-timer-seconds">10</span>
+              </div>
+              <div class="timer-label-box">
+                <span class="timer-label-title">⚡ นับถอยหลัง</span>
+                <span class="timer-mode-tag" id="timer-mode-tag">โหมดนักล่า</span>
+              </div>
+            </div>
+
             <div class="game-score-badge">
               <span>⭐</span> <span id="quiz-score-display">0</span> คะแนน
             </div>
@@ -267,6 +282,79 @@
         <button class="btn-primary" id="btn-confirm-hint" style="width: 100%; justify-content: center; margin-top: 18px;">
           <span>✨ เข้าใจแล้ว ลองทายดู!</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.2 CHALLENGE TIMER SETUP MODAL (หน้าต่างเลือกเวลาสำหรับโหมดนักล่า) -->
+  <div class="modal-backdrop" id="modal-timer-select">
+    <div class="codex-modal timer-select-modal" style="max-width: 520px;">
+      <div class="modal-header">
+        <h2>⚡ ตั้งเวลาท้าทาย (โหมดนักล่าดวงดาว)</h2>
+        <button class="btn-close-modal" id="btn-close-timer-modal">✕</button>
+      </div>
+      <div class="timer-modal-body">
+        <div class="timer-modal-hero">
+          <div class="timer-modal-icon">⏱️</div>
+          <p class="timer-modal-desc">
+            เลือกเวลาในการตอบคำถามแต่ละข้อ เพื่อทดสอบความเร็วและความแม่นยำของสายตา!
+          </p>
+        </div>
+
+        <!-- Timer Presets Grid -->
+        <div class="timer-options-grid">
+          <button type="button" class="timer-chip-btn" data-time="5">
+            <span class="chip-icon">⚡</span>
+            <span class="chip-time">5 วินาที</span>
+            <span class="chip-desc">สายฟ้าแลบ (ยากมาก)</span>
+          </button>
+          <button type="button" class="timer-chip-btn active" data-time="10">
+            <span class="chip-icon">🔥</span>
+            <span class="chip-time">10 วินาที</span>
+            <span class="chip-desc">ยอดนิยม (ท้าทาย)</span>
+          </button>
+          <button type="button" class="timer-chip-btn" data-time="15">
+            <span class="chip-icon">⏱️</span>
+            <span class="chip-time">15 วินาที</span>
+            <span class="chip-desc">มาตรฐาน (กำลังดี)</span>
+          </button>
+          <button type="button" class="timer-chip-btn" data-time="20">
+            <span class="chip-icon">⏳</span>
+            <span class="chip-time">20 วินาที</span>
+            <span class="chip-desc">สบายๆ (ปานกลาง)</span>
+          </button>
+          <button type="button" class="timer-chip-btn" data-time="30">
+            <span class="chip-icon">🐢</span>
+            <span class="chip-time">30 วินาที</span>
+            <span class="chip-desc">ฝึกฝน (ง่าย)</span>
+          </button>
+        </div>
+
+        <!-- Custom Time Slider -->
+        <div class="custom-timer-slider-box">
+          <div class="slider-header-row">
+            <span>🎯 หรือกำหนดเวลาเอง:</span>
+            <strong class="slider-value-display"><span id="custom-time-val">10</span> วินาที</strong>
+          </div>
+          <input type="range" id="slider-custom-time" min="3" max="60" value="10" step="1" class="timer-range-slider">
+          <div class="slider-marks">
+            <span>3s</span>
+            <span>15s</span>
+            <span>30s</span>
+            <span>45s</span>
+            <span>60s</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="timer-modal-actions">
+          <button class="btn-primary start-challenge-btn" id="btn-confirm-start-challenge">
+            <span>🚀 เริ่มล่าดวงดาว (<span id="btn-timer-val-display">10</span> วินาที/ข้อ)</span>
+          </button>
+          <button class="btn-secondary" id="btn-cancel-timer-modal" style="justify-content: center;">
+            <span>ยกเลิก</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

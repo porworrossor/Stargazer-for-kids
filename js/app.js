@@ -5,6 +5,10 @@
 class StargazerApp {
   constructor() {
     this.currentMode = 'practice'; // 'practice' or 'challenge'
+    this.challengeTimePerQuestion = 10; // seconds per question in challenge mode
+    this.timerInterval = null;
+    this._lastTickSec = null;
+
     this.questions = [];
     this.currentIndex = 0;
     this.score = 0;
@@ -59,19 +63,75 @@ class StargazerApp {
     // Home logo
     document.getElementById('btn-home-logo').addEventListener('click', () => {
       audioManager.playPop();
+      this.stopTimer();
       this.showScreen('start');
     });
 
-    // Start Buttons
+    // Start Practice Mode Button
     document.getElementById('btn-start-practice').addEventListener('click', () => {
       audioManager.playPop();
       this.startQuiz('practice');
     });
 
+    // Start Challenge Mode Button -> Opens Timer Selection Modal
+    const modalTimerSelect = document.getElementById('modal-timer-select');
+    const sliderCustomTime = document.getElementById('slider-custom-time');
+    const customTimeVal = document.getElementById('custom-time-val');
+    const btnTimerValDisplay = document.getElementById('btn-timer-val-display');
+
+    let selectedChallengeTime = 10;
+
+    const updateSelectedTime = (time) => {
+      selectedChallengeTime = parseInt(time, 10);
+      if (sliderCustomTime) sliderCustomTime.value = selectedChallengeTime;
+      if (customTimeVal) customTimeVal.textContent = selectedChallengeTime;
+      if (btnTimerValDisplay) btnTimerValDisplay.textContent = selectedChallengeTime;
+
+      document.querySelectorAll('.timer-chip-btn').forEach(chip => {
+        chip.classList.toggle('active', parseInt(chip.dataset.time, 10) === selectedChallengeTime);
+      });
+    };
+
     document.getElementById('btn-start-challenge').addEventListener('click', () => {
       audioManager.playPop();
-      this.startQuiz('challenge');
+      updateSelectedTime(this.challengeTimePerQuestion || 10);
+      if (modalTimerSelect) modalTimerSelect.classList.add('active');
     });
+
+    // Timer Modal Controls
+    document.querySelectorAll('.timer-chip-btn').forEach(chip => {
+      chip.addEventListener('click', () => {
+        audioManager.playPop();
+        updateSelectedTime(chip.dataset.time);
+      });
+    });
+
+    if (sliderCustomTime) {
+      sliderCustomTime.addEventListener('input', (e) => {
+        updateSelectedTime(e.target.value);
+      });
+    }
+
+    const closeTimerModal = () => {
+      audioManager.playPop();
+      if (modalTimerSelect) modalTimerSelect.classList.remove('active');
+    };
+
+    const btnCloseTimer = document.getElementById('btn-close-timer-modal');
+    if (btnCloseTimer) btnCloseTimer.addEventListener('click', closeTimerModal);
+
+    const btnCancelTimer = document.getElementById('btn-cancel-timer-modal');
+    if (btnCancelTimer) btnCancelTimer.addEventListener('click', closeTimerModal);
+
+    // Confirm Start Challenge Button
+    const btnConfirmChallenge = document.getElementById('btn-confirm-start-challenge');
+    if (btnConfirmChallenge) {
+      btnConfirmChallenge.addEventListener('click', () => {
+        audioManager.playPop();
+        if (modalTimerSelect) modalTimerSelect.classList.remove('active');
+        this.startQuiz('challenge', selectedChallengeTime);
+      });
+    }
 
     document.getElementById('btn-main-play').addEventListener('click', () => {
       audioManager.playPop();
@@ -122,11 +182,12 @@ class StargazerApp {
     // Play Again & Home
     document.getElementById('btn-play-again').addEventListener('click', () => {
       audioManager.playPop();
-      this.startQuiz(this.currentMode);
+      this.startQuiz(this.currentMode, this.challengeTimePerQuestion);
     });
 
     document.getElementById('btn-back-home').addEventListener('click', () => {
       audioManager.playPop();
+      this.stopTimer();
       this.showScreen('start');
     });
 
@@ -144,7 +205,7 @@ class StargazerApp {
       if (e.target === modalCodex) modalCodex.classList.remove('active');
     });
 
-    // Hint Modal
+    // Hint Modal Confirm & Close
     const modalHint = document.getElementById('modal-hint');
     document.getElementById('btn-close-hint').addEventListener('click', () => {
       audioManager.playPop();
@@ -158,7 +219,7 @@ class StargazerApp {
       if (e.target === modalHint) modalHint.classList.remove('active');
     });
 
-    // Certificate Modal
+    // Certificate Generator Modal
     const modalCert = document.getElementById('modal-certificate');
     document.getElementById('btn-show-cert').addEventListener('click', () => {
       audioManager.playPop();
@@ -179,14 +240,17 @@ class StargazerApp {
   }
 
   showScreen(screenName) {
+    this.stopTimer();
     Object.values(this.screens).forEach(s => s.classList.remove('active'));
     if (this.screens[screenName]) {
       this.screens[screenName].classList.add('active');
     }
   }
 
-  startQuiz(mode = 'practice') {
+  startQuiz(mode = 'practice', timeLimit = 10) {
+    this.stopTimer();
     this.currentMode = mode;
+    this.challengeTimePerQuestion = timeLimit;
     this.score = 0;
     this.streak = 0;
     this.maxStreak = 0;
@@ -203,12 +267,25 @@ class StargazerApp {
     // Shuffle constellations for diverse playthroughs
     this.questions = [...CONSTELLATIONS_DATA].sort(() => Math.random() - 0.5);
 
+    // Setup HUD for current mode
+    const timerBadge = document.getElementById('quiz-timer-badge');
+    const timerModeTag = document.getElementById('timer-mode-tag');
+    if (timerBadge) {
+      if (mode === 'challenge') {
+        timerBadge.style.display = 'flex';
+        if (timerModeTag) timerModeTag.textContent = `โหมดนักล่า (${timeLimit}s)`;
+      } else {
+        timerBadge.style.display = 'none';
+      }
+    }
+
     this.updateScoreHUD();
     this.showScreen('quiz');
     this.loadQuestion(0);
   }
 
   loadQuestion(index) {
+    this.stopTimer();
     this.currentIndex = index;
     this.isAnswered = false;
     this.isOverlayVisible = false;
@@ -266,6 +343,119 @@ class StargazerApp {
 
     // Render 4 Options (Shuffled)
     this.renderOptions(data);
+
+    // Start countdown timer if in Challenge Mode
+    if (this.currentMode === 'challenge') {
+      this.startQuestionTimer();
+    }
+  }
+
+  startQuestionTimer() {
+    this.stopTimer();
+    const timerBadge = document.getElementById('quiz-timer-badge');
+    const timerSecondsEl = document.getElementById('quiz-timer-seconds');
+    const progressCircle = document.getElementById('timer-progress-circle');
+
+    if (timerBadge) {
+      timerBadge.style.display = 'flex';
+      timerBadge.classList.remove('low-time');
+    }
+
+    const totalTime = this.challengeTimePerQuestion || 10;
+    if (timerSecondsEl) timerSecondsEl.textContent = totalTime;
+    if (progressCircle) progressCircle.setAttribute('stroke-dashoffset', '0');
+
+    const startTime = Date.now();
+    this._lastTickSec = null;
+
+    this.timerInterval = setInterval(() => {
+      if (this.isAnswered) {
+        this.stopTimer();
+        return;
+      }
+
+      const elapsedMs = Date.now() - startTime;
+      const remainingSec = Math.max(0, totalTime - (elapsedMs / 1000));
+      const displaySec = Math.ceil(remainingSec);
+
+      if (timerSecondsEl) timerSecondsEl.textContent = displaySec;
+
+      // Circle Progress (0 is full, 100 is empty)
+      const percentLeft = (remainingSec / totalTime) * 100;
+      const dashOffset = 100 - percentLeft;
+      if (progressCircle) progressCircle.setAttribute('stroke-dashoffset', dashOffset);
+
+      // Low time warning when remaining <= 3s
+      if (displaySec <= 3 && displaySec > 0) {
+        if (timerBadge && !timerBadge.classList.contains('low-time')) {
+          timerBadge.classList.add('low-time');
+        }
+        if (this._lastTickSec !== displaySec) {
+          this._lastTickSec = displaySec;
+          audioManager.playTick();
+        }
+      }
+
+      // Timeout triggered
+      if (remainingSec <= 0) {
+        this.stopTimer();
+        this.handleTimeout();
+      }
+    }, 50);
+  }
+
+  stopTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    this._lastTickSec = null;
+    const timerBadge = document.getElementById('quiz-timer-badge');
+    if (timerBadge) timerBadge.classList.remove('low-time');
+  }
+
+  handleTimeout() {
+    if (this.isAnswered) return;
+    this.isAnswered = true;
+    audioManager.playTimeout();
+
+    // Reset streak on timeout
+    this.streak = 0;
+    this.updateScoreHUD();
+
+    // Disable all options and show correct answer
+    const allButtons = document.querySelectorAll('.option-btn');
+    allButtons.forEach(btn => {
+      btn.disabled = true;
+      if (btn.dataset.correct === 'true') {
+        btn.classList.add('correct');
+      }
+    });
+
+    // Reveal art overlay
+    this.toggleOverlay(true);
+
+    // Disable lifelines and skip button
+    document.getElementById('btn-hint-peek').disabled = true;
+    document.getElementById('btn-hint-5050').disabled = true;
+    document.getElementById('btn-hint-clue').disabled = true;
+    const btnSkip = document.getElementById('btn-skip-question');
+    if (btnSkip) btnSkip.disabled = true;
+
+    // Show Feedback Card indicating Timeout
+    const data = this.questions[this.currentIndex];
+    const feedbackCard = document.getElementById('feedback-card');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackFunfact = document.getElementById('feedback-funfact');
+
+    feedbackTitle.className = 'feedback-header wrong-head';
+    feedbackTitle.innerHTML = `<span>⏰</span> หมดเวลาแล้ว! คำตอบที่ถูกต้องคือ: <strong>${data.correctAnswer}</strong>`;
+
+    feedbackFunfact.innerHTML = `
+      <strong>💡 เรื่องน่ารู้แห่งดวงดาว:</strong> ${data.funFact}
+    `;
+
+    feedbackCard.style.display = 'block';
   }
 
   renderConstellationSVG(data) {
@@ -481,6 +671,7 @@ class StargazerApp {
 
   skipQuestion() {
     if (this.isAnswered) return;
+    this.stopTimer();
     this.isAnswered = true;
     audioManager.playPop();
 
@@ -566,6 +757,7 @@ class StargazerApp {
 
   handleOptionClick(selectedBtn, isCorrect, data) {
     if (this.isAnswered) return;
+    this.stopTimer();
     this.isAnswered = true;
 
     // Disable all options
@@ -764,9 +956,12 @@ class StargazerApp {
     ctx.font = 'bold 26px Prompt, sans-serif';
     ctx.fillText('🌟 "นักดาราศาสตร์น้อย ผู้พิชิตกลุ่มดาว 12 จักราศี" 🌟', w / 2, 430);
 
+    const modeStr = this.currentMode === 'challenge' ? `โหมดนักล่า (${this.challengeTimePerQuestion}s/ข้อ)` : 'โหมดฝึกท่องอวกาศ';
+    const accuracy = Math.round((this.correctCount / Math.max(1, this.questions.length)) * 100);
+
     ctx.fillStyle = '#94A3B8';
     ctx.font = '18px Prompt, sans-serif';
-    ctx.fillText(`คะแนนรวม: ${this.score} แต้ม | ความแม่นยำ: ${Math.round((this.correctCount / Math.max(1, this.questions.length)) * 100)}%`, w / 2, 475);
+    ctx.fillText(`คะแนน: ${this.score} แต้ม | ความแม่นยำ: ${accuracy}% | ${modeStr}`, w / 2, 475);
 
     // Footer - Badge & Signature
     ctx.fillStyle = '#FFD700';

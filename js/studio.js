@@ -31,9 +31,114 @@ class ConstellationStudio {
       new CosmicStarfield('starfield-canvas');
     }
 
+    this.initPasscodeProtection();
     this.buildZodiacChips();
     this.bindEvents();
     this.loadConstellation(0);
+  }
+
+  initPasscodeProtection() {
+    const lockOverlay = document.getElementById('studio-lock-screen');
+    const pinInput = document.getElementById('studio-passcode-input');
+    const errorMsg = document.getElementById('lock-error-msg');
+    const lockCard = document.querySelector('.studio-lock-card');
+    const STUDIO_PIN = '4011';
+
+    if (!lockOverlay || !pinInput) return;
+
+    // Check session authorization
+    const isAuth = sessionStorage.getItem('studio_auth_unlocked') === 'true';
+    if (isAuth) {
+      lockOverlay.classList.add('unlocked');
+      setTimeout(() => {
+        lockOverlay.style.display = 'none';
+      }, 400);
+    } else {
+      lockOverlay.style.display = 'flex';
+      lockOverlay.classList.remove('unlocked');
+      setTimeout(() => pinInput.focus(), 150);
+    }
+
+    const checkPasscode = () => {
+      const entered = pinInput.value.trim();
+      if (entered === STUDIO_PIN) {
+        sessionStorage.setItem('studio_auth_unlocked', 'true');
+        if (errorMsg) {
+          errorMsg.style.color = 'var(--accent-green)';
+          errorMsg.textContent = '✅ รหัสผ่านถูกต้อง ยินดีต้อนรับ!';
+        }
+        lockOverlay.classList.add('unlocked');
+        setTimeout(() => {
+          lockOverlay.style.display = 'none';
+        }, 400);
+      } else {
+        if (lockCard) {
+          lockCard.classList.remove('shake-animation');
+          void lockCard.offsetWidth; // trigger reflow
+          lockCard.classList.add('shake-animation');
+        }
+        if (errorMsg) {
+          errorMsg.style.color = 'var(--accent-coral)';
+          errorMsg.textContent = '❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
+        }
+        pinInput.value = '';
+        setTimeout(() => pinInput.focus(), 100);
+      }
+    };
+
+    // Unlock Submit
+    document.getElementById('form-studio-passcode').addEventListener('submit', (e) => {
+      e.preventDefault();
+      checkPasscode();
+    });
+
+    document.getElementById('btn-unlock-studio').addEventListener('click', (e) => {
+      e.preventDefault();
+      checkPasscode();
+    });
+
+    // Keypad digits
+    document.querySelectorAll('.pin-key-btn[data-key]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (pinInput.value.length < 4) {
+          pinInput.value += btn.dataset.key;
+          if (pinInput.value.length === 4) {
+            setTimeout(checkPasscode, 150);
+          }
+        }
+      });
+    });
+
+    // Clear and Backspace
+    const btnClear = document.getElementById('btn-pin-clear');
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        pinInput.value = '';
+        if (errorMsg) errorMsg.textContent = '';
+        pinInput.focus();
+      });
+    }
+
+    const btnBack = document.getElementById('btn-pin-back');
+    if (btnBack) {
+      btnBack.addEventListener('click', () => {
+        pinInput.value = pinInput.value.slice(0, -1);
+        pinInput.focus();
+      });
+    }
+
+    // Header Lock Button
+    const btnLock = document.getElementById('btn-lock-studio');
+    if (btnLock) {
+      btnLock.addEventListener('click', () => {
+        sessionStorage.removeItem('studio_auth_unlocked');
+        lockOverlay.style.display = 'flex';
+        lockOverlay.classList.remove('unlocked');
+        pinInput.value = '';
+        if (errorMsg) errorMsg.textContent = '';
+        setTimeout(() => pinInput.focus(), 150);
+      });
+    }
   }
 
   buildZodiacChips() {
