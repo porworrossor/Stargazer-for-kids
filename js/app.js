@@ -790,14 +790,14 @@ class StargazerApp {
       this.confetti.burst(window.innerWidth / 2, window.innerHeight / 2, 40);
 
       feedbackTitle.className = 'feedback-header correct-head';
-      feedbackTitle.innerHTML = `<span>✨🎉</span> ยอดเยี่ยมมาก! คำตอบคือ <strong>${data.correctAnswer}</strong>`;
+      feedbackTitle.innerHTML = `✨🎉 ยอดเยี่ยมมาก! คำตอบคือ <strong>${data.correctAnswer}</strong>`;
     } else {
       selectedBtn.classList.add('wrong');
       this.streak = 0;
       audioManager.playWrong();
 
       feedbackTitle.className = 'feedback-header wrong-head';
-      feedbackTitle.innerHTML = `<span>🔭</span> เกือบถูกแล้ว! คำตอบที่แท้จริงคือ <strong>${data.correctAnswer}</strong>`;
+      feedbackTitle.innerHTML = `🔭เกือบถูกแล้ว! คำตอบที่แท้จริงคือ <strong>${data.correctAnswer}</strong>`;
     }
 
     feedbackFunfact.innerHTML = `
